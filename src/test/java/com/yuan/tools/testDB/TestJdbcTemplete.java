@@ -1,5 +1,5 @@
 package com.yuan.tools.testDB;
 
-public class testJdbcTemplete {
+public class TestJdbcTemplete {
 
 }
