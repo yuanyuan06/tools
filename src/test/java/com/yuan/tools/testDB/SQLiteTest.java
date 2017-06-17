@@ -1,4 +1,4 @@
-package com.yuan.tools;
+package com.yuan.tools.testDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
