@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+  
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+	   <!--<errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/> -->
+	   <param name="Target" value="System.out"/>
+	   <param name="Threshold" value="DEBUG"/>
+	   <layout class="org.apache.log4j.PatternLayout">
+	      <!-- The default pattern: Date Priority [Category] Message\n -->
+	      <param name="ConversionPattern" value="DEV-[%-5p]%d{yyyy-MM-dd HH:mm:ss.SSS} [%c{1}]: %m%n"/>
+	   </layout>
+	</appender>
+	
+	<appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="10240KB"/> 
+		<param name="File" value="log/dec/file/log"/> 
+		<param name="MaxBackupIndex" value="3"/> 
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p]%d{yyyy-MM-dd HH:mm:ss,SSS} MESSAGE : %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="DailyRollingFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/vmuser/tomcat/tomcat-tmall/dailyFile/log" />
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p]%d{yyyy-MM-dd HH:mm:ss.SSS} [%c{1}]: %m%n" />
+		</layout>
+	</appender>
+
+	<category name="loxia.dao.DaoService">
+		<priority value="debug"/>
+	</category>
+   
+	<category name="com.jumbo">
+		<priority value="INFO"/>
+	</category>
+   	
+	<category name="org.springframework">
+		<priority value="ERROR"/>
+	</category>
+   
+	
+	<category name="org.apache.activemq.transport">
+		<priority value="ERROR"/>
+	</category>
+
+   	<category name="loxia.dao.support.BaseRowMapper">
+   		<priority value="ERROR"/>
+   	</category>
+   	
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="CONSOLE"/>
+	</root>
+
+</log4j:configuration>
